@@ -2,12 +2,12 @@
 
 import { useState } from "react";
 import Navbar from "../components/Navbar";
-import ProteinProducts , {Product} from "@/app/data/proteinProducts";
+import ProteinProducts, { Product } from "@/app/data/proteinProducts";
 import Link from "next/link";
 
 export default function Proteins() {
     return (
-        <div className="bg-gray-800 min-h-screen">
+        <div className="bg-black min-h-screen">
             <Navbar />
             <h1 className="text-6xl text-white font-bold text-center my-4">Proteins</h1>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  lg:mx-auto gap-6  p-6">

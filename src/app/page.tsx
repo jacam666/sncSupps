@@ -12,8 +12,8 @@ export default function Home() {
   return (
     <div>
       <Navbar />
-      <div className="bg-gray-50 min-h-screen py-8 px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="bg-gray-50 min-h-screen py-2 px-2">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
           <Card elevation={0} >
             <CardActionArea >
               <CardMedia
@@ -26,7 +26,7 @@ export default function Home() {
                 <Typography gutterBottom variant="h5">
                   Great tasting protein
                 </Typography>
-                <Typography  >
+                <Typography className=""  >
                   SNC Supplements are a range of products designed to help you achieve your fitness goals.
                 </Typography>
               </CardContent>
@@ -42,10 +42,10 @@ export default function Home() {
               />
               <CardContent className="bg-[var(--snc-orange)]">
                 <Typography gutterBottom variant="h5">
-                  Extremely effective pre-workouts
+                   Effective pre-workouts
                 </Typography>
                 <Typography  >
-                  Unleash your full potential with our premium pre-workouts, meticulously designed to elevate your exercise routine.
+                  Unleash your full potential with our premium pre-workouts, designed to elevate your exercise routine.
                 </Typography>
               </CardContent>
             </CardActionArea>
@@ -81,7 +81,7 @@ export default function Home() {
                 <Typography gutterBottom variant="h5">
                   Wide range of products
                 </Typography>
-                <Typography className="xl:pb-6" >
+                <Typography className="xl:pb-6 2xl-pb-0" >
                   We have products ranging from proteins and pre-workouts to fat burners.
                 </Typography>
               </CardContent>

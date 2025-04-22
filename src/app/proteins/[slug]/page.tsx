@@ -21,7 +21,7 @@ export default function ProductDetail() {
   if (!product) return notFound();
 
   return (
-    <div className=" max-w-full">
+    <div className="bg-black min-h-full  max-w-full">
       <Navbar />
       <h1 className="text-3xl font-bold mb-4 text-center my-8 p-6">{product.name}</h1>
 
