@@ -52,7 +52,7 @@ export default function Navbar() {
                                 <img
                                     alt="Your Company"
                                     src="/sncImages/logo-copy.png"
-                                    className="h-8 w-auto invert"
+                                    className="h-14  invert"
                                 />
 
                             </Link>
