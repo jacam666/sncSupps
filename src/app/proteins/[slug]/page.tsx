@@ -23,7 +23,7 @@ export default function ProductDetail() {
   return (
     <div className="bg-black min-h-full  max-w-full">
       <Navbar />
-      <h1 className="text-3xl font-bold mb-4 text-center my-8 p-6">{product.name}</h1>
+      <h1 className=" text-white text-3xl font-bold mb-4 text-center my-8 p-6">{product.name}</h1>
 
       <div className="flex flex-col sm:flex-row justify-evenly items-center gap-4 p-4">
         <div className="">
