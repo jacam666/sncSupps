@@ -9,9 +9,9 @@ const navigation = [
     { name: 'Proteins', href: '/proteins', current: false },
     { name: 'Pre-Workouts', href: '/preWorkouts', current: false },
     { name: 'Fat Loss', href: '/fatLoss', current: false },
-    { name: 'General Wellbeing', href: '#', current: false },
+    { name: 'Other Products', href: '#', current: false },
     { name: 'Plans', href: '#', current: false },
-    { name: 'The Studio', href: '#', current: false },
+    { name: 'The Studio', href: '/studioGallery', current: false },
     { name: 'Basket', href: '#', current: false },
 ]
 
