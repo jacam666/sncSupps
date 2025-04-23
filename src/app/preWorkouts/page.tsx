@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 interface Product {
     id: number;
@@ -92,6 +93,7 @@ export default function PreWorkouts() {
                     <ProductCard key={product.id} product={product} />
                 ))}
             </div>
+            <Footer />
         </div>
     );
 }

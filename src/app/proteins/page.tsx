@@ -4,6 +4,7 @@ import { useState } from "react";
 import Navbar from "../components/Navbar";
 import ProteinProducts, { Product } from "@/app/data/proteinProducts";
 import Link from "next/link";
+import Footer from "../components/Footer";
 
 export default function Proteins() {
     return (
@@ -15,6 +16,7 @@ export default function Proteins() {
                     <ProductCard key={product.id} product={product} />
                 ))}
             </div>
+            <Footer />
         </div>
     );
 }

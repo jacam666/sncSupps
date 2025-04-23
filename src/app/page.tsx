@@ -6,6 +6,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import CardActionArea from '@mui/material/CardActionArea';
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 
 export default function Home() {
@@ -87,9 +88,9 @@ export default function Home() {
               </CardContent>
             </CardActionArea>
           </Card>
-
         </div>
       </div>
+      <Footer />
     </div>
   );
 }
