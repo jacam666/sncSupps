@@ -30,11 +30,14 @@ export default function ProductDetail() {
           <Image
             src={`/${product.images[0]}`}
             alt={product.name}
-            width={400}
+            width={300}
             height={400}
             priority
-            className="rounded-lg object-contain"
+            className="rounded-lg object-contain bg-gradient-to-br from-[var(--snc-orange)] via-[#ffd9b3] to-[#b8860b]"
           />
+
+        </div>
+        <div className="flex flex-col justify-between items-center sm:items-start sm:ml-4 my-8 sm:mt-0">
           <div className="flex flex-col sm:justify-center  text-white text-center">
             <p><span className="font-semibold">Flavour:</span> {product.flavour}</p>
             <p><span className="font-semibold">Size:</span> {product.size}</p>

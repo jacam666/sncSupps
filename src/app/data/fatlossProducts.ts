@@ -49,5 +49,17 @@ const FatLossproduct: Product[] = [
         flavour: "",
         description: "Stage Ripped has been especially formulated to aid in weight loss, giving energy, suppressing appetite and increasing body temperature for burning fat. \nFor best results take on a calorie reduced diet."
     },
+    {
+        id: 4,
+        name: "FAT BURNER BUNDLE DEAL",
+        slug: "fat-burner-bundle-deal",
+        price: 44.99,
+        images: [
+            "sncImages/fat-burner-bundle.png",
+        ],
+        size: "",
+        flavour: "",
+        description: "Torch fat day and night with the ultimate Fat Burner Bundle!\n This powerful duo combines Stage Ripped for all-day energy, appetite control, and fat burning, with No More Hunger to curb cravings in the evening without stimulants. \nPerfect for supporting your weight loss goals 24/7."
+    },
 ]
 export default FatLossproduct;

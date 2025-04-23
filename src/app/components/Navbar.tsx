@@ -8,7 +8,7 @@ const navigation = [
     { name: 'Home', href: '/', current: true },
     { name: 'Proteins', href: '/proteins', current: false },
     { name: 'Pre-Workouts', href: '/preWorkouts', current: false },
-    { name: 'Fat Loss', href: 'fatLoss', current: false },
+    { name: 'Fat Loss', href: '/fatLoss', current: false },
     { name: 'General Wellbeing', href: '#', current: false },
     { name: 'Plans', href: '#', current: false },
     { name: 'The Studio', href: '#', current: false },
