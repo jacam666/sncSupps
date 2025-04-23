@@ -41,6 +41,9 @@ export default function ProductDetail() {
                         <p><span className="font-semibold">Flavour:</span> {product.flavour}</p>
                         <p><span className="font-semibold">Size:</span> {product.size}</p>
                         <p className="text-xl font-bold mt-4">£{product.price.toFixed(2)}</p>
+                        <button className="bg-[var(--snc-orange)] text-white px-4 py-2 rounded-lg my-8 hover:bg-orange-600 transition duration-300">
+                            Add To Cart
+                        </button>
                     </div>
                 </div>
                 {product.images[1] && (

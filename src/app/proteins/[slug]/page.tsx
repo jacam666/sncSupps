@@ -35,15 +35,18 @@ export default function ProductDetail() {
             priority
             className="rounded-lg object-contain bg-gradient-to-br from-[var(--snc-orange)] via-[#ffd9b3] to-[#b8860b]"
           />
-
         </div>
-        <div className="flex flex-col justify-between items-center sm:items-start sm:ml-4 my-8 sm:mt-0">
-          <div className="flex flex-col sm:justify-center  text-white text-center">
+        <div className="flex flex-col justify-between items-center my-8">
+          <div className="flex flex-col  text-white text-center">
             <p><span className="font-semibold">Flavour:</span> {product.flavour}</p>
             <p><span className="font-semibold">Size:</span> {product.size}</p>
             <p className="text-xl font-bold mt-4">£{product.price.toFixed(2)}</p>
           </div>
+          <button className="bg-[var(--snc-orange)] text-white px-4 py-2 rounded-lg my-8 hover:bg-orange-600 transition duration-300">
+            Add To Cart
+          </button>
         </div>
+
         {product.images[1] && (
           <div className="">
             <h2 className="text-xl font-semibold mb-2">Nutritional Info</h2>
@@ -65,7 +68,7 @@ export default function ProductDetail() {
       <div className="my-4 text-center">
         <Link
           href="/proteins"
-          className="bg-[var(--snc-orange)] text-gray-900 px-4 py-2 rounded-lg hover:bg-orange-600 transition duration-300"
+          className="bg-[var(--snc-orange)] text-white px-4 py-2 rounded-lg hover:bg-orange-600 transition duration-300"
         >
           Back to Proteins
         </Link>

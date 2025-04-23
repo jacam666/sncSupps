@@ -4,7 +4,7 @@ import { useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Link from "next/link";
-import PlanProducts, {Product} from "../data/plansProducts";
+import PlanProducts, { Product } from "../data/plansProducts";
 
 export default function Plans() {
     return (
@@ -64,6 +64,9 @@ function ProductCard({ product }: { product: Product }) {
             <div className="p-4 text-gray-900 flex flex-col flex-1">
                 <h2 className="text-xl font-semibold">{product.name}</h2>
                 <p className="text-lg font-bold">£{product.price.toFixed(2)}</p>
+                <button className="bg-[var(--snc-orange)] text-white  mx-auto px-4 py-2 rounded-lg my-8 hover:bg-orange-600 transition duration-300">
+                    Add To Cart
+                </button>
             </div>
             <div className="bg-gradient-to-br from-gray-200 via-slate-200 to-cyan-950 p-4 py-4 text-left mt-auto text-gray-900 text-xl font-bold block">
                 {product.description}

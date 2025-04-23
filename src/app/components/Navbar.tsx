@@ -12,7 +12,7 @@ const navigation = [
     { name: 'Other Products', href: '#', current: false },
     { name: 'Plans', href: '/plans', current: false },
     { name: 'The Studio', href: '/studioGallery', current: false },
-    { name: 'Basket', href: '#', current: false },
+    { name: 'Basket', href: '/basket', current: false },
 ]
 
 function classNames(...classes: (string | boolean | undefined)[]): string {
@@ -62,18 +62,18 @@ export default function Navbar() {
                                 {navigation.map((item) => {
                                     const isActive = pathname === item.href;
                                     return (
-                                    <a
+                                        <Link
                                         key={item.name}
                                         href={item.href}
-                                        aria-current={isActive ? 'page' : undefined}
                                         className={classNames(
-                                            isActive 
-                                            ? 'bg-[var(--snc-orange)] text-gray-900' : 'text-white hover:bg-gray-700 hover:text-white',
-                                            'rounded-md px-3 py-2 text-sm font-medium',
+                                          isActive
+                                            ? 'bg-[var(--snc-orange)] text-gray-900'
+                                            : 'text-white hover:bg-gray-700 hover:text-white',
+                                          'rounded-md px-3 py-2 text-sm font-medium'
                                         )}
-                                    >
+                                      >
                                         {item.name}
-                                    </a>
+                                      </Link>
                                 )})}
                             </div>
                         </div>
@@ -85,7 +85,7 @@ export default function Navbar() {
                     {navigation.map((item) => (
                         <DisclosureButton
                             key={item.name}
-                            as="a"
+                            as={Link}
                             href={item.href}
                             aria-current={item.current ? 'page' : undefined}
                             className={classNames(
