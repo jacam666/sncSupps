@@ -3,14 +3,16 @@
 import { createContext, useContext, useState, ReactNode } from "react";
 
 export interface Product {
-  id: number;
-  name: string;
-  price: number;
-  images: string[];
-  size: string;
-  flavour: string;
-  slug: string;
-}
+    id: number;
+    name: string;
+    price: number;
+    images: string[];
+    size: string;
+    flavour?: string;
+    slug?: string;
+    description?: string;
+  }
+  
 
 interface CartItem extends Product {
   quantity: number;
