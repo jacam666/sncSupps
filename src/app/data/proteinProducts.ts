@@ -7,6 +7,7 @@ export interface Product {
     size: string;
     flavour: string;
     slug: string;
+    description?: string;
 }
 
 const ProteinProducts: Product[] = [
@@ -44,7 +45,8 @@ const ProteinProducts: Product[] = [
             "sncImages/after-train-advanced-nutrition.jpeg",
         ],
         flavour: "Strawberry and Lime",
-        size: "2Kg"
+        size: "2Kg",
+        description: "After Train Advanced has been specially formulated to aid recovery straight after a workout. \nWIth the very best ingredients 100% whey protein isolate, cyclic dextrin, creatine and glutamine makes this one of the best all in one recovery drinks on the market. With it’s easy to mix formula and superb flavour it is amazingly refreshing and easy to drink after them hard gruelling workouts. Suitable for vegetarian’s."
     },
     {
         id: 4,
@@ -56,7 +58,8 @@ const ProteinProducts: Product[] = [
             "sncImages/after-train-advanced-nutrition.jpeg",
         ],
         flavour: "Blue Candy Flavour",
-        size: "2Kg"
+        size: "2Kg",
+        description: "After Train Advanced has been specially formulated to aid recovery straight after a workout. \nWIth the very best ingredients 100% whey protein isolate, cyclic dextrin, creatine and glutamine makes this one of the best all in one recovery drinks on the market. With it’s easy to mix formula and superb flavour it is amazingly refreshing and easy to drink after them hard gruelling workouts. Suitable for vegetarian’s."
     },
     {
         id: 5,
@@ -68,7 +71,8 @@ const ProteinProducts: Product[] = [
             "sncImages/after-train-nutri-info.jpeg"
         ],
         flavour: "Orange Mango Flavour",
-        size: "2Kg"
+        size: "2Kg",
+        description: "After Train Advanced has been specially formulated to aid recovery straight after a workout. \nWIth the very best ingredients 100% whey protein isolate, cyclic dextrin, creatine and glutamine makes this one of the best all in one recovery drinks on the market. With it’s easy to mix formula and superb flavour it is amazingly refreshing and easy to drink after them hard gruelling workouts. Suitable for vegetarian’s."
     },
     {
         id: 6,
@@ -80,7 +84,8 @@ const ProteinProducts: Product[] = [
             "sncImages/after-train-nutri-info.jpeg",
         ],
         flavour: "Fruit Punch",
-        size: "908g"
+        size: "908g",
+        description: "After Train has been specially formulated to aid recovery straight after a workout. with its 50/50 ratio of isolate and carbs combined with creatine and glutamine makes this a great all in one recovery drink. Easy to mix formula and superb flavours it is amazingly refreshing and easy to drink after them hard gruelling workouts. After Train is produced to iso 22000 standards, batch tested and made in an informed sport approved facility. Suitable for vegetarian’s."
     },
     {
         id: 7,
@@ -92,7 +97,8 @@ const ProteinProducts: Product[] = [
             "sncImages/after-train-nutri-info.jpeg"
         ],
         flavour: "Raspberry",
-        size: "908g"
+        size: "908g",
+        description: "After Train has been specially formulated to aid recovery straight after a workout. \nwith its 50/50 ratio of isolate and carbs combined with creatine and glutamine makes this a great all in one recovery drink. \nEasy to mix formula and superb flavours, it is amazingly refreshing and easy to drink after them hard gruelling workouts. \nAfter Train is produced to iso 22000 standards, batch tested and made in an informed sport approved facility. \nSuitable for vegetarian’s."
     },
     {
         id: 8,
@@ -104,7 +110,8 @@ const ProteinProducts: Product[] = [
             "sncImages/after-train-nutri-info.jpeg",
         ],
         flavour: "Apple",
-        size: "908g"
+        size: "908g",
+        description: "After Train has been specially formulated to aid recovery straight after a workout. \nwith its 50/50 ratio of isolate and carbs combined with creatine and glutamine makes this a great all in one recovery drink. \nEasy to mix formula and superb flavours, it is amazingly refreshing and easy to drink after them hard gruelling workouts. \nAfter Train is produced to iso 22000 standards, batch tested and made in an informed sport approved facility. \nSuitable for vegetarian’s."
     },
     {
         id: 9,
@@ -116,7 +123,8 @@ const ProteinProducts: Product[] = [
             "sncImages/after-train-nutri-info.jpeg"
         ],
         flavour: "Orange",
-        size: "908g"
+        size: "908g",
+        description: "After Train has been specially formulated to aid recovery straight after a workout. \nwith its 50/50 ratio of isolate and carbs combined with creatine and glutamine makes this a great all in one recovery drink. \nEasy to mix formula and superb flavours, it is amazingly refreshing and easy to drink after them hard gruelling workouts. \nAfter Train is produced to iso 22000 standards, batch tested and made in an informed sport approved facility. \nSuitable for vegetarian’s."
     },
 ];
 

@@ -2,17 +2,17 @@
 
 import { useState } from "react";
 import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
-import Workoutproducts, { Product } from "@/app/data/preworkoutProducts";
 import Link from "next/link";
+import Footer from "../components/Footer";
+import FatLossproduct, {Product} from "../data/fatlossProducts";
 
-export default function PreWorkouts() {
+export default function FatLoss() {
     return (
         <div className="bg-black min-h-screen">
             <Navbar />
-            {/* <h1 className="text-6xl text-white font-bold text-center my-4">Pre-Workouts</h1> */}
+            {/* <h1 className="text-6xl text-white font-bold text-center my-4">Proteins</h1> */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  lg:mx-auto gap-6  p-6">
-                {Workoutproducts.map((product) => (
+                {FatLossproduct.map((product) => (
                     <ProductCard key={product.id} product={product} />
                 ))}
             </div>
@@ -33,7 +33,6 @@ function ProductCard({ product }: { product: Product }) {
             prev === 0 ? product.images.length - 1 : prev - 1
         );
     };
-
 
     return (
         <div className="bg-white bg-var rounded-lg shadow-md  overflow-hidden flex flex-col">
@@ -67,10 +66,9 @@ function ProductCard({ product }: { product: Product }) {
                 <p>{product.size}</p>
                 <p className="text-lg font-bold">£{product.price.toFixed(2)}</p>
             </div>
-            <Link href={`/preWorkouts/${product.slug}`} className="bg-[var(--snc-orange)] py-4 text-center mt-auto text-gray-900 text-xl font-bold block">
+            <Link href={`/fatLoss/${product.slug}`} className="bg-[var(--snc-orange)] py-4 text-center mt-auto text-gray-900 text-xl font-bold block">
                 Learn More
             </Link>
-
         </div>
     );
 }

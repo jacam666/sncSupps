@@ -85,7 +85,7 @@ export default function Footer() {
     };
 
     return (
-        <footer className="bg-black text-white py-6 px-4">
+        <footer className="bg-black text-white py-6 px-4 mt-8 border-t-[var(--snc-orange)] border-t-2 pt-4 ">
             <div className="max-w-6xl mx-auto">
                 <div className="flex flex-col md:flex-row md:justify-between gap-8">
                     {/* Logo */}
@@ -95,14 +95,14 @@ export default function Footer() {
                             alt="SNC Logo"
                             width={200}
                             height={100}
-                            className="mx-auto md:mx-0 py-4 invert"
+                            className="mx-auto md:mx-0 py-4 h-auto invert"
                         />
                     </div>
 
                     {/* Contact Section */}
                     <div className="w-full md:w-auto">
                         <button
-                            className="w-full text-left text-xl font-semibold text-[var(--snc-orange)] md:cursor-default"
+                            className="w-full text-left text-xl md:text-2xl font-semibold text-[var(--snc-orange)] md:cursor-default"
                             onClick={() => toggleSection("contact")}
                         >
                             Contact Us
@@ -135,7 +135,7 @@ export default function Footer() {
                     {/* Social Section */}
                     <div className="w-full md:w-auto">
                         <button
-                            className="w-full text-left text-xl font-semibold text-[var(--snc-orange)] md:cursor-default"
+                            className="w-full text-left text-xl md:text-2xl font-semibold text-[var(--snc-orange)] md:cursor-default"
                             onClick={() => toggleSection("social")}
                         >
                             Follow Us
