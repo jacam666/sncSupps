@@ -22,7 +22,7 @@ export default function GalleryPage() {
   return (
     <div className="bg-black min-h-screen py-8 px-4">
       <Navbar />
-      <h1 className="text-white text-4xl font-bold text-center mb-8">SNC Studio Gallery</h1>
+      <h1 className="text-white text-4xl font-bold text-center my-8">SNC Studio Gallery</h1>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 max-w-6xl mx-auto">
         {StudioGallery.map((image, i) => (
