@@ -40,7 +40,7 @@ function ProductCard({ product }: { product: Product }) {
                 <img
                     src={`/${product.images[currentImage]}`}
                     alt={product.name}
-                    className="w-full h-full object-contain"
+                    className="w-full h-full object-contain "
                 />
 
                 {product.images.length > 1 && (

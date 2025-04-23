@@ -35,11 +35,6 @@ export default function ProductDetail() {
                         priority
                         className="rounded-lg object-contain bg-gradient-to-br from-[var(--snc-orange)] via-[#ffd9b3] to-[#b8860b]"
                     />
-                    {/* <div className="flex flex-col sm:justify-center  text-white text-center">
-                        <p><span className="font-semibold">Flavour:</span> {product.flavour}</p>
-                        <p><span className="font-semibold">Size:</span> {product.size}</p>
-                        <p className="text-xl font-bold mt-4">£{product.price.toFixed(2)}</p>
-                    </div> */}
                 </div>
                 <div className="flex flex-col justify-between items-center sm:items-start sm:ml-4 my-8 sm:mt-0">
                     <div className="flex flex-col sm:justify-center  text-white text-center">

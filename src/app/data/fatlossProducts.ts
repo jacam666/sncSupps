@@ -4,7 +4,7 @@ export interface Product {
     price: number;
     images: string[];
     size: string;
-    flavour: string;
+    flavour?: string;
     slug?: string;
     description?: string;
 };
@@ -19,7 +19,7 @@ const FatLossproduct: Product[] = [
             "sncImages/RIPPED-EXTREME-300x300.png",
             "sncImages/staged-ripped-info.jpeg",
         ],
-        size: "60 Caps",
+        size: "Size : 60 Caps",
         flavour: "",
         description: "Stage Ripped Extreme has been especially formulated to aid in maximum weight loss. \nGiving increased energy and suppressing appetite, for best results take on a calorie reduced diet. \nWarning high caffeine content, use with caution."
     },
@@ -32,7 +32,7 @@ const FatLossproduct: Product[] = [
             "sncImages/NO-HUNGER-300x300.png",
             "sncImages/nomore-hunger-info.jpeg"
         ],
-        size: "90 Caps",
+        size: "Size : 90 Caps",
         flavour: "",
         description: "No more hunger has been especially formulated to suppress appetite, it doesn’t contain any form of stimulates so it can be taken later in the evening when food cravings are most likely to kick in. \nNo more hunger is very effective when taken in conjunction with Stage Ripped.\n Stage Ripped is most effective if taken early in the day giving you energy and suppressing appetite throughout the day, once the Stage Ripped wears off you can take No more hunger keeping the fat burning process going in the evening and during the night."
     },
@@ -45,7 +45,7 @@ const FatLossproduct: Product[] = [
             "sncImages/Stage-Ripped-CGI-300x300.png",
             "sncImages/staged-ripped-info.jpeg"
         ],
-        size: "60 Caps",
+        size: "Size : 60 Caps",
         flavour: "",
         description: "Stage Ripped has been especially formulated to aid in weight loss, giving energy, suppressing appetite and increasing body temperature for burning fat. \nFor best results take on a calorie reduced diet."
     },
