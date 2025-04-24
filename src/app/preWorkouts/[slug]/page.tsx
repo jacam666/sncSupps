@@ -6,19 +6,29 @@ import Navbar from "@/app/components/Navbar";
 import Link from "next/link";
 import Footer from "@/app/components/Footer";
 import PreworkoutProducts from "@/app/data/preworkoutProducts";
+import { useCart } from "@/app/context/CartContext";
+import { useState } from "react";
 
-interface Params {
-    params: { slug: string };
-}
+// interface Params {
+//     params: { slug: string };
+// }
 
 export default function ProductDetail() {
 
     const params = useParams();
     const slug = params?.slug;
-
     const product = PreworkoutProducts.find((p) => p.slug === slug);
 
     if (!product) return notFound();
+
+     const { addToCart } = useCart();
+        const [added, setAdded] = useState(false);
+    
+        const handleAdd = () => {
+            addToCart(product); 
+            setAdded(true);
+            setTimeout(() => setAdded(false), 2000);
+        };
 
     return (
         <div className="bg-black min-h-full  max-w-full">
@@ -41,9 +51,13 @@ export default function ProductDetail() {
                         <p><span className="font-semibold">Flavour:</span> {product.flavour}</p>
                         <p><span className="font-semibold">Size:</span> {product.size}</p>
                         <p className="text-xl font-bold mt-4">£{product.price.toFixed(2)}</p>
-                        <button className="bg-[var(--snc-orange)] text-white px-4 py-2 rounded-lg my-8 hover:bg-orange-600 transition duration-300">
-                            Add To Cart
-                        </button>
+                        <button
+                        onClick={handleAdd}
+                        disabled={added}
+                        className="bg-[var(--snc-orange)] text-white px-4 py-2 rounded-lg my-8 hover:bg-orange-600 transition duration-300"
+                    >
+                        {added ? "Added!" : "Add To Cart"}
+                    </button>
                     </div>
                 </div>
                 {product.images[1] && (

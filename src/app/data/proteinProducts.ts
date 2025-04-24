@@ -12,7 +12,7 @@ export interface Product {
 
 const ProteinProducts: Product[] = [
     {
-        id: 1,
+        id: 13,
         slug: "the-only-whey-protein-2-2kg",
         name: 'THE ONLY WHEY PROTEIN',
         price: 39.99,
@@ -24,7 +24,7 @@ const ProteinProducts: Product[] = [
         size: "2.2 Kg",
     },
     {
-        id: 2,
+        id: 14,
         name: 'THE ONLY WHEY PROTEIN',
         slug: "the-only-whey-protein-908g",
         price: 29.99,
@@ -36,7 +36,7 @@ const ProteinProducts: Product[] = [
         size: "908g",
     },
     {
-        id: 3,
+        id: 15,
         name: "AFTER TRAIN ADVANCED",
         slug: "after-train-advanced-strawberry-2kg",
         price: 39.99,
@@ -49,7 +49,7 @@ const ProteinProducts: Product[] = [
         description: "After Train Advanced has been specially formulated to aid recovery straight after a workout. \nWIth the very best ingredients 100% whey protein isolate, cyclic dextrin, creatine and glutamine makes this one of the best all in one recovery drinks on the market. With it’s easy to mix formula and superb flavour it is amazingly refreshing and easy to drink after them hard gruelling workouts. Suitable for vegetarian’s."
     },
     {
-        id: 4,
+        id: 16,
         name: "AFTER TRAIN ADVANCED",
         slug: "after-train-advanced-candy-2kg",
         price: 39.99,
@@ -62,7 +62,7 @@ const ProteinProducts: Product[] = [
         description: "After Train Advanced has been specially formulated to aid recovery straight after a workout. \nWIth the very best ingredients 100% whey protein isolate, cyclic dextrin, creatine and glutamine makes this one of the best all in one recovery drinks on the market. With it’s easy to mix formula and superb flavour it is amazingly refreshing and easy to drink after them hard gruelling workouts. Suitable for vegetarian’s."
     },
     {
-        id: 5,
+        id: 17,
         name: "AFTER TRAIN ADVANCED",
         slug: "after-train-advanced-mango-2kg",
         price: 39.99,
@@ -75,7 +75,7 @@ const ProteinProducts: Product[] = [
         description: "After Train Advanced has been specially formulated to aid recovery straight after a workout. \nWIth the very best ingredients 100% whey protein isolate, cyclic dextrin, creatine and glutamine makes this one of the best all in one recovery drinks on the market. With it’s easy to mix formula and superb flavour it is amazingly refreshing and easy to drink after them hard gruelling workouts. Suitable for vegetarian’s."
     },
     {
-        id: 6,
+        id: 18,
         name: "AFTER TRAIN",
         slug: "after-train-fruit-2kg",
         price: 24.99,
@@ -88,7 +88,7 @@ const ProteinProducts: Product[] = [
         description: "After Train has been specially formulated to aid recovery straight after a workout. with its 50/50 ratio of isolate and carbs combined with creatine and glutamine makes this a great all in one recovery drink. Easy to mix formula and superb flavours it is amazingly refreshing and easy to drink after them hard gruelling workouts. After Train is produced to iso 22000 standards, batch tested and made in an informed sport approved facility. Suitable for vegetarian’s."
     },
     {
-        id: 7,
+        id: 19,
         name: "AFTER TRAIN",
         slug: "after-train-raspberry-2kg",
         price: 24.99,
@@ -101,7 +101,7 @@ const ProteinProducts: Product[] = [
         description: "After Train has been specially formulated to aid recovery straight after a workout. \nwith its 50/50 ratio of isolate and carbs combined with creatine and glutamine makes this a great all in one recovery drink. \nEasy to mix formula and superb flavours, it is amazingly refreshing and easy to drink after them hard gruelling workouts. \nAfter Train is produced to iso 22000 standards, batch tested and made in an informed sport approved facility. \nSuitable for vegetarian’s."
     },
     {
-        id: 8,
+        id: 20,
         name: "AFTER TRAIN",
         slug: "after-train-apple-2kg",
         price: 24.99,
@@ -114,7 +114,7 @@ const ProteinProducts: Product[] = [
         description: "After Train has been specially formulated to aid recovery straight after a workout. \nwith its 50/50 ratio of isolate and carbs combined with creatine and glutamine makes this a great all in one recovery drink. \nEasy to mix formula and superb flavours, it is amazingly refreshing and easy to drink after them hard gruelling workouts. \nAfter Train is produced to iso 22000 standards, batch tested and made in an informed sport approved facility. \nSuitable for vegetarian’s."
     },
     {
-        id: 9,
+        id: 21,
         name: "AFTER TRAIN",
         slug: "after-train-orange-2kg",
         price: 24.99,

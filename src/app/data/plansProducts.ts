@@ -10,14 +10,14 @@ export interface Product {
 const PlanProducts: Product[] = [
     
     {
-        id: 1,
+        id: 5,
         name: "BESPOKE DIET PLAN",
         price: 30.00,
         images: ["sncImages/diet-plan-image.jpg",],
         description: "I am a level 4 nutritional coach with 30 years experience.\n  Whether you want to lose weight, gain weight or gain muscle, I will draw up a bespoke diet plan to suit you, plus I will be here for any help after and any changes that need to be made. "
     },
     {
-        id: 2,
+        id: 6,
         name: "TRAINING PLANS",        
         price: 30.00,
         images: ["sncImages/training-plan-image.jpg",],

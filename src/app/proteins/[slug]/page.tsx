@@ -4,9 +4,11 @@ import { notFound, useParams } from "next/navigation";
 import ProteinProducts from "@/app/data/proteinProducts";
 import Image from "next/image";
 import Navbar from "@/app/components/Navbar";
-import { usePageLeave } from "@mantine/hooks";
+// import { usePageLeave } from "@mantine/hooks";
 import Link from "next/link";
 import Footer from "@/app/components/Footer";
+import { useCart } from "@/app/context/CartContext";
+import { useState } from "react";
 
 interface Params {
   params: { slug: string };
@@ -16,8 +18,16 @@ export default function ProductDetail() {
 
   const params = useParams();
   const slug = params?.slug;
-
   const product = ProteinProducts.find((p) => p.slug === slug);
+
+  const { addToCart } = useCart();
+  const [added, setAdded] = useState(false);
+
+  const handleAdd = () => {
+    addToCart(product!);
+    setAdded(true);
+    setTimeout(() => setAdded(false), 2000);
+  };
 
   if (!product) return notFound();
 
@@ -42,11 +52,14 @@ export default function ProductDetail() {
             <p><span className="font-semibold">Size:</span> {product.size}</p>
             <p className="text-xl font-bold mt-4">£{product.price.toFixed(2)}</p>
           </div>
-          <button className="bg-[var(--snc-orange)] text-white px-4 py-2 rounded-lg my-8 hover:bg-orange-600 transition duration-300">
-            Add To Cart
+          <button
+            onClick={handleAdd}
+            disabled={added}
+            className="bg-[var(--snc-orange)] text-white px-4 py-2 rounded-lg my-8 hover:bg-orange-600 transition duration-300"
+          >
+            {added ? "Added!" : "Add To Cart"}
           </button>
         </div>
-
         {product.images[1] && (
           <div className="">
             <h2 className="text-xl font-semibold mb-2">Nutritional Info</h2>
