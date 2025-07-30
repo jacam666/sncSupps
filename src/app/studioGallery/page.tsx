@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Navbar from "../components/Navbar";
 import StudioGallery from "@/app/data/studioGallery";
 import Lightbox from "yet-another-react-lightbox";
@@ -15,6 +15,7 @@ export default function GalleryPage() {
   const [index, setIndex] = useState(0);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isScrolling, setIsScrolling] = useState(false);
+  const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const slides = StudioGallery.map((img) => ({
     src: `/${img.src}`,
@@ -70,8 +71,10 @@ export default function GalleryPage() {
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolling(true);
-      clearTimeout(window.scrollTimeout);
-      window.scrollTimeout = setTimeout(() => {
+      if (scrollTimeoutRef.current) {
+        clearTimeout(scrollTimeoutRef.current);
+      }
+      scrollTimeoutRef.current = setTimeout(() => {
         setIsScrolling(false);
       }, 1000);
     };
@@ -79,7 +82,9 @@ export default function GalleryPage() {
     window.addEventListener('scroll', handleScroll);
     return () => {
       window.removeEventListener('scroll', handleScroll);
-      clearTimeout(window.scrollTimeout);
+      if (scrollTimeoutRef.current) {
+        clearTimeout(scrollTimeoutRef.current);
+      }
     };
   }, []);
 
