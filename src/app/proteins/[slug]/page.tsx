@@ -4,91 +4,225 @@ import { notFound, useParams } from "next/navigation";
 import ProteinProducts from "@/app/data/proteinProducts";
 import Image from "next/image";
 import Navbar from "@/app/components/Navbar";
-// import { usePageLeave } from "@mantine/hooks";
 import Link from "next/link";
 import Footer from "@/app/components/Footer";
 import { useCart } from "@/app/context/CartContext";
 import { useState } from "react";
 
-interface Params {
-  params: { slug: string };
-}
-
 export default function ProductDetail() {
+    const params = useParams();
+    const slug = params?.slug;
+    const product = ProteinProducts.find((p) => p.slug === slug);
 
-  const params = useParams();
-  const slug = params?.slug;
-  const product = ProteinProducts.find((p) => p.slug === slug);
+    if (!product) return notFound();
 
-  const { addToCart } = useCart();
-  const [added, setAdded] = useState(false);
+    const { addToCart } = useCart();
+    const [added, setAdded] = useState(false);
 
-  const handleAdd = () => {
-    addToCart(product!);
-    setAdded(true);
-    setTimeout(() => setAdded(false), 2000);
-  };
+    const handleAdd = () => {
+        addToCart(product);
+        setAdded(true);
+        setTimeout(() => setAdded(false), 2000);
+    };
 
-  if (!product) return notFound();
+    return (
+        <div className="bg-gradient-to-br from-gray-50 to-orange-50 min-h-screen">
+            <Navbar />
+            
+            {/* Breadcrumb */}
+            <div className="max-w-7xl mx-auto px-6 pt-28 pb-4">
+                <nav className="text-sm text-gray-600">
+                    <Link href="/" className="hover:text-orange-600 transition-colors">
+                        Home
+                    </Link>
+                    <span className="mx-2">›</span>
+                    <Link href="/proteins" className="hover:text-orange-600 transition-colors">
+                        Protein Products
+                    </Link>
+                    <span className="mx-2">›</span>
+                    <span className="text-orange-600 font-medium">{product.name}</span>
+                </nav>
+            </div>
 
-  return (
-    <div className="bg-black min-h-full  max-w-full">
-      <Navbar />
-      <h1 className=" text-white text-3xl font-bold mb-4 text-center my-8 p-6">{product.name}</h1>
-      <div className="flex flex-col sm:flex-row xl:w-3/4 mx-auto justify-between  items-center gap-4 p-4">
-        <div className="flex flex-col sm:flex-row">
-          <Image
-            src={`/${product.images[0]}`}
-            alt={product.name}
-            width={300}
-            height={400}
-            priority
-            className="rounded-lg object-contain bg-gradient-to-br from-[var(--snc-orange)] via-[#ffd9b3] to-[#b8860b]"
-          />
+            {/* Product Header */}
+            <div className="max-w-7xl mx-auto px-6 mb-12">
+                <div className="text-center">
+                    <h1 className="text-4xl md:text-6xl font-bold text-gray-800 mb-4">
+                        {product.name}
+                    </h1>
+                    <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-6">
+                        Premium protein supplement for muscle growth and recovery
+                    </p>
+                    <div className="w-24 h-1 bg-gradient-to-r from-orange-400 to-orange-600 mx-auto rounded-full"></div>
+                </div>
+            </div>
+
+            {/* Product Content */}
+            <div className="max-w-7xl mx-auto px-6 pb-12">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    
+                    {/* Left Column - Product Images */}
+                    <div className="space-y-8">
+                        {/* Main Product Image */}
+                        <div className="bg-white rounded-2xl shadow-lg border border-orange-100 overflow-hidden">
+                            <div className="bg-gradient-to-br from-orange-400 via-orange-300 to-amber-200 p-8">
+                                <div className="relative">
+                                    <Image
+                                        src={`/${product.images[0]}`}
+                                        alt={product.name}
+                                        width={500}
+                                        height={600}
+                                        priority
+                                        className="w-full h-auto object-contain drop-shadow-lg"
+                                    />
+                                    {/* Decorative Elements */}
+                                    <div className="absolute top-4 right-4 w-16 h-16 bg-white/30 rounded-full blur-sm"></div>
+                                    <div className="absolute bottom-6 left-6 w-12 h-12 bg-white/20 rounded-full blur-sm"></div>
+                                </div>
+                            </div>
+                            <div className="h-2 bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600"></div>
+                        </div>
+
+                        {/* Nutritional Information */}
+                        {product.images[1] && (
+                            <div className="bg-white rounded-2xl shadow-lg border border-orange-100 p-6">
+                                <h3 className="text-2xl font-bold text-gray-800 mb-6 flex items-center">
+                                    <svg className="w-6 h-6 text-orange-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                    </svg>
+                                    Nutritional Information
+                                </h3>
+                                <div className="bg-gray-50 rounded-xl p-4 border border-gray-200">
+                                    <Image
+                                        src={`/${product.images[1]}`}
+                                        alt="Nutrition Facts"
+                                        width={500}
+                                        height={400}
+                                        className="w-full h-auto object-contain rounded-lg"
+                                    />
+                                </div>
+                            </div>
+                        )}
+                    </div>
+
+                    {/* Right Column - Product Details */}
+                    <div className="space-y-8">
+                        {/* Product Info Card */}
+                        <div className="bg-white rounded-2xl shadow-lg border border-orange-100 p-8">
+                            <div className="space-y-6">
+                                {/* Price */}
+                                <div className="text-center pb-6 border-b border-gray-200">
+                                    <div className="text-5xl font-bold text-gray-800 mb-2">
+                                        £{product.price.toFixed(2)}
+                                    </div>
+                                    <div className="text-gray-600">Premium Quality Protein</div>
+                                </div>
+
+                                {/* Product Properties */}
+                                <div className="space-y-4">
+                                    <div className="flex items-center justify-between p-4 bg-orange-50 rounded-xl border border-orange-100">
+                                        <div className="flex items-center space-x-3">
+                                            <div className="w-3 h-3 bg-orange-500 rounded-full"></div>
+                                            <span className="font-semibold text-gray-700">Flavour</span>
+                                        </div>
+                                        <span className="text-orange-700 font-bold">{product.flavour}</span>
+                                    </div>
+
+                                    <div className="flex items-center justify-between p-4 bg-orange-50 rounded-xl border border-orange-100">
+                                        <div className="flex items-center space-x-3">
+                                            <div className="w-3 h-3 bg-orange-500 rounded-full"></div>
+                                            <span className="font-semibold text-gray-700">Size</span>
+                                        </div>
+                                        <span className="text-orange-700 font-bold">{product.size}</span>
+                                    </div>
+                                </div>
+
+                                {/* Add to Cart Button */}
+                                <button
+                                    onClick={handleAdd}
+                                    disabled={added}
+                                    className={`w-full py-4 px-8 rounded-xl font-bold text-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 ${
+                                        added
+                                            ? 'bg-green-500 text-white cursor-not-allowed'
+                                            : 'bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white'
+                                    }`}
+                                >
+                                    <span className="flex items-center justify-center space-x-2">
+                                        {added ? (
+                                            <>
+                                                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                                                </svg>
+                                                <span>Added to Cart!</span>
+                                            </>
+                                        ) : (
+                                            <>
+                                                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17M17 13v4a2 2 0 01-2 2H9a2 2 0 01-2-2v-4m8 0V9a2 2 0 00-2-2H9a2 2 0 00-2 2v4.01" />
+                                                </svg>
+                                                <span>Add to Cart</span>
+                                            </>
+                                        )}
+                                    </span>
+                                </button>
+
+                                {/* Continue Shopping */}
+                                <Link 
+                                    href="/proteins"
+                                    className="block w-full text-center border-2 border-orange-500 text-orange-600 hover:bg-orange-50 py-3 px-6 rounded-xl font-semibold transition-all duration-300"
+                                >
+                                    ← Back to Protein Products
+                                </Link>
+                            </div>
+                        </div>
+
+                        {/* Key Benefits */}
+                        <div className="bg-white rounded-2xl shadow-lg border border-orange-100 p-8">
+                            <h3 className="text-2xl font-bold text-gray-800 mb-6 flex items-center">
+                                <svg className="w-6 h-6 text-orange-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                                </svg>
+                                Key Benefits
+                            </h3>
+                            <div className="space-y-3">
+                                {[
+                                    "High-quality whey protein isolate",
+                                    "Supports muscle growth and recovery",
+                                    "Fast absorption for optimal results",
+                                    "Great taste and mixability",
+                                    "Third-party tested for purity"
+                                ].map((benefit, index) => (
+                                    <div key={index} className="flex items-center space-x-3">
+                                        <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                                        <span className="text-gray-700">{benefit}</span>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Product Description */}
+                {product.description && (
+                    <div className="mt-12">
+                        <div className="bg-white rounded-2xl shadow-lg border border-orange-100 p-8">
+                            <h2 className="text-3xl font-bold text-gray-800 mb-6 flex items-center">
+                                <svg className="w-8 h-8 text-orange-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                                About This Product
+                            </h2>
+                            <div className="prose prose-lg max-w-none">
+                                <div className="text-gray-700 text-lg leading-relaxed whitespace-pre-line">
+                                    {product.description}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                )}
+            </div>
+            
+            <Footer />
         </div>
-        <div className="flex flex-col justify-between items-center my-8">
-          <div className="flex flex-col  text-white text-center">
-            <p><span className="font-semibold">Flavour:</span> {product.flavour}</p>
-            <p><span className="font-semibold">Size:</span> {product.size}</p>
-            <p className="text-xl font-bold mt-4">£{product.price.toFixed(2)}</p>
-          </div>
-          <button
-            onClick={handleAdd}
-            disabled={added}
-            className="bg-[var(--snc-orange)] text-white px-4 py-2 rounded-lg my-8 hover:bg-orange-600 transition duration-300"
-          >
-            {added ? "Added!" : "Add To Cart"}
-          </button>
-        </div>
-        {product.images[1] && (
-          <div className="">
-            <h2 className="text-xl font-semibold mb-2">Nutritional Info</h2>
-            <Image
-              src={`/${product.images[1]}`}
-              alt="Nutrition Info"
-              width={300}
-              height={300}
-              className="rounded-lg object-contain"
-            />
-          </div>
-        )}
-      </div>
-      {product.description && (
-        <div className="bg-black text-white text-sm leading-relaxed mb-8  mt-6 px-6 py-4 rounded-lg max-w-3xl mx-6 sm:mx-auto whitespace-pre-line shadow-md border border-[var(--snc-orange)]">
-          {product.description}
-        </div>
-      )}
-      <div className="my-4 text-center">
-        <Link
-          href="/proteins"
-          className="bg-[var(--snc-orange)] text-white px-4 py-2 rounded-lg hover:bg-orange-600 transition duration-300"
-        >
-          Back to Proteins
-        </Link>
-      </div>
-      <div className="">
-        <Footer />
-      </div>
-    </div>
-  );
+    );
 }

@@ -3,13 +3,14 @@ import { Bars3Icon, XMarkIcon, ShoppingCartIcon } from '@heroicons/react/24/outl
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
+import { useCart } from '../context/CartContext'
 
 const navigation = [
     { name: 'Home', href: '/', current: true },
     { name: 'Proteins', href: '/proteins', current: false },
     { name: 'Pre-Workouts', href: '/preWorkouts', current: false },
     { name: 'Fat Loss', href: '/fatLoss', current: false },
-    { name: 'Other Products', href: '#', current: false },
+    // { name: 'Other Products', href: '#', current: false },
     { name: 'Plans', href: '/plans', current: false },
     { name: 'The Studio', href: '/studioGallery', current: false },
 ]
@@ -22,6 +23,10 @@ export default function Navbar() {
     const pathname = usePathname();
     const [mounted, setMounted] = useState(false);
     const [scrolled, setScrolled] = useState(false);
+    const { cart } = useCart();
+    
+    // Calculate total items in cart
+    const cartItemCount = cart.reduce((total, item) => total + item.quantity, 0);
 
     useEffect(() => {
         setMounted(true);
@@ -121,10 +126,12 @@ export default function Navbar() {
                             }`}
                         >
                             <ShoppingCartIcon className="h-6 w-6" />
-                            {/* Cart badge - you can add cart count logic here */}
-                            <span className="absolute -top-1 -right-1 bg-gradient-to-r from-orange-500 to-orange-600 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-bold">
-                                0
-                            </span>
+                            {/* Cart badge with dynamic count */}
+                            {cartItemCount > 0 && (
+                                <span className="absolute -top-1 -right-1 bg-gradient-to-r from-orange-500 to-orange-600 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-bold animate-pulse">
+                                    {cartItemCount > 99 ? '99+' : cartItemCount}
+                                </span>
+                            )}
                         </Link>
                     </div>
                 </div>

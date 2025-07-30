@@ -5,6 +5,7 @@ import Navbar from "../components/Navbar";
 import ProteinProducts, { Product } from "@/app/data/proteinProducts";
 import Link from "next/link";
 import Footer from "../components/Footer";
+import { useCart } from "../context/CartContext";
 
 export default function Proteins() {
     return (
@@ -38,6 +39,8 @@ export default function Proteins() {
 
 function ProductCard({ product }: { product: Product }) {
     const [currentImage, setCurrentImage] = useState(0);
+    const { addToCart } = useCart();
+    const [isAdding, setIsAdding] = useState(false);
 
     const nextImage = () => {
         setCurrentImage((prev) => (prev + 1) % product.images.length);
@@ -47,6 +50,23 @@ function ProductCard({ product }: { product: Product }) {
         setCurrentImage((prev) =>
             prev === 0 ? product.images.length - 1 : prev - 1
         );
+    };
+
+    const handleAddToCart = (e: React.MouseEvent) => {
+        e.preventDefault();
+        e.stopPropagation();
+        setIsAdding(true);
+        
+        try {
+            // Add a small delay for visual feedback
+            setTimeout(() => {
+                addToCart(product);
+                setIsAdding(false);
+            }, 300);
+        } catch (error) {
+            console.error('Error adding to cart:', error);
+            setIsAdding(false);
+        }
     };
 
     return (
@@ -159,16 +179,52 @@ function ProductCard({ product }: { product: Product }) {
                 {/* Gradient Divider */}
                 <div className="h-px bg-gradient-to-r from-transparent via-orange-300 to-transparent my-4"></div>
                 
-                {/* Action Button */}
-                <Link 
-                    href={`/proteins/${product.slug}`} 
-                    className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white py-4 px-6 rounded-xl text-center font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 group-hover:from-orange-600 group-hover:to-orange-700"
-                >
-                    <span className="flex items-center justify-center space-x-2">
-                        <span>Learn More</span>
-                        <span className="text-xl">→</span>
-                    </span>
-                </Link>
+                {/* Price Display */}
+                <div className="text-center mb-4">
+                    <span className="text-3xl font-bold text-gray-800">£{product.price}</span>
+                </div>
+                
+                {/* Action Buttons */}
+                <div className="space-y-3">
+                    <button
+                        onClick={handleAddToCart}
+                        disabled={isAdding}
+                        className={`w-full py-4 px-6 rounded-xl text-center font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 ${
+                            isAdding
+                                ? 'bg-green-500 text-white cursor-not-allowed'
+                                : 'bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white'
+                        }`}
+                    >
+                        <span className="flex items-center justify-center space-x-2">
+                            {isAdding ? (
+                                <>
+                                    <svg className="animate-spin h-5 w-5 text-white" fill="none" viewBox="0 0 24 24">
+                                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                    </svg>
+                                    <span>Adding...</span>
+                                </>
+                            ) : (
+                                <>
+                                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17M17 13v4a2 2 0 01-2 2H9a2 2 0 01-2-2v-4m8 0V9a2 2 0 00-2-2H9a2 2 0 00-2 2v4.01" />
+                                    </svg>
+                                    <span>Add to Cart</span>
+                                </>
+                            )}
+                        </span>
+                    </button>
+                    
+                    <Link 
+                        href={`/proteins/${product.slug}`} 
+                        className="block w-full border-2 border-orange-500 text-orange-600 hover:bg-orange-50 py-3 px-6 rounded-xl text-center font-semibold transition-all duration-300"
+                    >
+                        <span className="flex items-center justify-center space-x-2">
+                            <span>Learn More</span>
+                            <span className="text-xl">→</span>
+                        </span>
+                    </Link>
+                </div>
             </div>
 
             {/* Bottom Accent */}
