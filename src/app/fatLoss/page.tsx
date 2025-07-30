@@ -12,7 +12,7 @@ export default function FatLoss() {
             <Navbar />
             
             {/* Page Header */}
-            <div className="text-center py-12 px-4">
+            <div className="text-center pt-32 pb-12 px-4"> {/* Added pt-32 to account for fixed navbar */}
                 <h1 className="text-5xl md:text-6xl font-bold text-gray-800 mb-4">
                     Premium <span className="text-orange-500">Fat Loss</span>
                 </h1>

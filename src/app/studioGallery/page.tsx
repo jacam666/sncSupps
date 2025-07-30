@@ -99,6 +99,9 @@ export default function GalleryPage() {
     <div className="bg-black min-h-screen overflow-hidden">
       <Navbar />
       
+      {/* Main Content with top padding for fixed navbar */}
+      <div className="pt-20"> {/* Added pt-20 to account for fixed navbar */}
+      
       {/* Hero Section with Full-Screen Images */}
       <div className="relative h-screen overflow-hidden">
         {/* Image Container */}
@@ -335,6 +338,7 @@ export default function GalleryPage() {
         slides={slides}
         plugins={[Thumbnails]}
       />
+      </div> {/* Close the pt-20 container */}
       
       <Footer />
     </div>

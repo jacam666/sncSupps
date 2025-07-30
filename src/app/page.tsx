@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-gray-50">
       <Navbar />
-      <div className="py-8 px-4 lg:px-8">
+      <div className="pt-24 pb-8 px-4 lg:px-8"> {/* Added pt-24 to account for fixed navbar */}
         <div className="max-w-7xl mx-auto">
           {/* Hero Section */}
           <div className="text-center mb-12">
