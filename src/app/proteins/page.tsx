@@ -52,23 +52,30 @@ function ProductCard({ product }: { product: Product }) {
     return (
         <div className="bg-gradient-to-br from-white to-orange-50 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden flex flex-col group border border-orange-100 transform hover:-translate-y-2">
             {/* Product Image with Enhanced Styling */}
-            <div className="relative h-72 w-full bg-gradient-to-br from-orange-400 via-orange-300 to-amber-200 p-6 overflow-hidden">
+            <div className="relative h-72 w-full bg-gradient-to-br from-orange-400 via-orange-300 to-amber-200 p-6">
                 <div className="absolute inset-0 bg-gradient-to-br from-orange-500/20 to-transparent"></div>
                 
-                {/* Scrolling Images Container */}
-                <div 
-                    className="relative z-10 w-full h-full flex transition-transform duration-500 ease-in-out"
-                    style={{ transform: `translateX(-${currentImage * 100}%)` }}
-                >
-                    {product.images.map((image, index) => (
-                        <div key={index} className="w-full h-full flex-shrink-0 flex items-center justify-center">
-                            <img
-                                src={`/${image}`}
-                                alt={`${product.name} - Image ${index + 1}`}
-                                className="w-full h-full object-contain drop-shadow-lg group-hover:scale-105 transition-transform duration-300"
-                            />
-                        </div>
-                    ))}
+                {/* Scrolling Images Container - Key fix: overflow-hidden on this container */}
+                <div className="relative z-10 h-full w-full overflow-hidden">
+                    <div 
+                        className="flex h-full transition-transform duration-500 ease-in-out"
+                        style={{ 
+                            transform: `translateX(-${currentImage * 100}%)`
+                        }}
+                    >
+                        {product.images.map((image, index) => (
+                            <div 
+                                key={index} 
+                                className="w-full h-full flex items-center justify-center flex-shrink-0"
+                            >
+                                <img
+                                    src={`/${image}`}
+                                    alt={`${product.name} - Image ${index + 1}`}
+                                    className="max-w-full max-h-full object-contain drop-shadow-lg group-hover:scale-105 transition-transform duration-300"
+                                />
+                            </div>
+                        ))}
+                    </div>
                 </div>
                 
                 {/* Decorative Elements */}
