@@ -9,19 +9,30 @@ import PlanProducts, { Product } from "../data/plansProducts";
 import { useCart } from "../context/CartContext";
 
 export default function Plans() {
-
-    
-
-    
     return (
-        <div className="bg-black min-h-screen">
+        <div className="bg-gradient-to-br from-gray-50 to-orange-50 min-h-screen">
             <Navbar />
-            {/* <h1 className="text-6xl text-white font-bold text-center my-4">Pre-Workouts</h1> */}
-            <div className="grid grid-cols-1 md:grid-cols-2  lg:mx-auto gap-6  p-6">
-                {PlanProducts.map((product) => (
-                    <ProductCard key={product.id} product={product} />
-                ))}
+            
+            {/* Page Header */}
+            <div className="text-center py-12 px-4">
+                <h1 className="text-5xl md:text-6xl font-bold text-gray-800 mb-4">
+                    Personalized <span className="text-orange-500">Training Plans</span>
+                </h1>
+                <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+                    Get expert guidance with our bespoke diet and training plans tailored specifically for your goals
+                </p>
+                <div className="w-24 h-1 bg-gradient-to-r from-orange-400 to-orange-600 mx-auto mt-6 rounded-full"></div>
             </div>
+
+            {/* Products Grid */}
+            <div className="max-w-7xl mx-auto px-6 pb-12">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {PlanProducts.map((product) => (
+                        <ProductCard key={product.id} product={product} />
+                    ))}
+                </div>
+            </div>
+            
             <Footer />
         </div>
     );
@@ -29,16 +40,14 @@ export default function Plans() {
 
 function ProductCard({ product }: { product: Product }) {
     const [currentImage, setCurrentImage] = useState(0);
-    // if (!product) return notFound();
-    
-        const { addToCart } = useCart();
-        const [added, setAdded] = useState(false);
-    
-        const handleAdd = () => {
-            addToCart(product); 
-            setAdded(true);
-            setTimeout(() => setAdded(false), 2000);
-        };
+    const { addToCart } = useCart();
+    const [added, setAdded] = useState(false);
+
+    const handleAdd = () => {
+        addToCart(product); 
+        setAdded(true);
+        setTimeout(() => setAdded(false), 2000);
+    };
 
     const nextImage = () => {
         setCurrentImage((prev) => (prev + 1) % product.images.length);
@@ -50,48 +59,124 @@ function ProductCard({ product }: { product: Product }) {
         );
     };
 
-
     return (
-        <div className="bg-white bg-var rounded-lg shadow-md  overflow-hidden flex flex-col">
-            <div className="relative h-64 w-full bg-gradient-to-br from-gray-200 via-slate-200 to-cyan-950 ">
-                <img
-                    src={`/${product.images[currentImage]}`}
-                    alt={product.name}
-                    className="w-full h-full object-contain"
-                />
+        <div className="bg-gradient-to-br from-white to-orange-50 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden flex flex-col group border border-orange-100 transform hover:-translate-y-2">
+            {/* Product Image with Enhanced Styling */}
+            <div className="relative h-72 w-full bg-gradient-to-br from-orange-400 via-orange-300 to-amber-200 p-6">
+                <div className="absolute inset-0 bg-gradient-to-br from-orange-500/20 to-transparent"></div>
+                
+                {/* Scrolling Images Container */}
+                <div className="relative z-10 h-full w-full overflow-hidden">
+                    <div 
+                        className="flex h-full transition-transform duration-500 ease-in-out"
+                        style={{ 
+                            transform: `translateX(-${currentImage * 100}%)`
+                        }}
+                    >
+                        {product.images.map((image, index) => (
+                            <div 
+                                key={index} 
+                                className="w-full h-full flex items-center justify-center flex-shrink-0 px-12 py-8"
+                            >
+                                <img
+                                    src={`/${image}`}
+                                    alt={`${product.name} - Image ${index + 1}`}
+                                    className="max-w-full max-h-full object-contain drop-shadow-lg group-hover:scale-105 transition-transform duration-300"
+                                />
+                            </div>
+                        ))}
+                    </div>
+                </div>
+                
+                {/* Decorative Elements */}
+                <div className="absolute top-4 right-4 w-12 h-12 bg-white/30 rounded-full blur-sm"></div>
+                <div className="absolute bottom-6 left-6 w-8 h-8 bg-white/20 rounded-full blur-sm"></div>
 
                 {product.images.length > 1 && (
                     <>
                         <button
-                            onClick={prevImage}
-                            className="absolute left-2 top-1/2 transform -translate-y-1/2  bg-opacity-75 rounded-full p-1"
+                            onClick={(e) => {
+                                e.preventDefault();
+                                e.stopPropagation();
+                                prevImage();
+                            }}
+                            className="absolute left-3 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white text-orange-600 rounded-full p-3 shadow-xl transition-all duration-200 hover:scale-110 backdrop-blur-sm z-20"
                         >
-                            ◀
+                            <span className="text-sm font-bold">‹</span>
                         </button>
                         <button
-                            onClick={nextImage}
-                            className="absolute right-2 top-1/2 transform -translate-y-1/2  bg-opacity-75 rounded-full p-1"
+                            onClick={(e) => {
+                                e.preventDefault();
+                                e.stopPropagation();
+                                nextImage();
+                            }}
+                            className="absolute right-3 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white text-orange-600 rounded-full p-3 shadow-xl transition-all duration-200 hover:scale-110 backdrop-blur-sm z-20"
                         >
-                            ▶
+                            <span className="text-sm font-bold">›</span>
                         </button>
                     </>
                 )}
-            </div>
-            <div className="p-4 text-gray-900 flex flex-col flex-1">
-                <h2 className="text-xl font-semibold">{product.name}</h2>
-                <p className="text-lg font-bold">£{product.price.toFixed(2)}</p>
+                
+                {/* Price Badge */}
+                <div className="absolute top-4 left-4 bg-orange-600 text-white px-4 py-2 rounded-full font-bold text-lg shadow-lg">
+                    £{product.price.toFixed(2)}
+                </div>
 
+                {/* Image Indicators */}
+                {product.images.length > 1 && (
+                    <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+                        {product.images.map((_, index) => (
+                            <button
+                                key={index}
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    e.stopPropagation();
+                                    setCurrentImage(index);
+                                }}
+                                className={`w-2 h-2 rounded-full transition-all duration-200 ${
+                                    index === currentImage 
+                                        ? 'bg-white scale-125' 
+                                        : 'bg-white/50 hover:bg-white/80'
+                                }`}
+                            />
+                        ))}
+                    </div>
+                )}
+            </div>
+
+            {/* Product Info Section */}
+            <div className="p-6 flex flex-col flex-1 space-y-4">
+                <div className="text-center">
+                    <h2 className="text-2xl font-bold text-gray-800 group-hover:text-orange-600 transition-colors duration-300 mb-3">
+                        {product.name}
+                    </h2>
+                </div>
+
+                {/* Product Description */}
+                <div className="bg-gradient-to-br from-orange-50 to-amber-50 rounded-xl p-4 border border-orange-100">
+                    <p className="text-gray-700 leading-relaxed text-sm whitespace-pre-line">
+                        {product.description}
+                    </p>
+                </div>
+
+                {/* Gradient Divider */}
+                <div className="h-px bg-gradient-to-r from-transparent via-orange-300 to-transparent my-4"></div>
+                
+                {/* Action Button */}
                 <button
-                        onClick={handleAdd}
-                        disabled={added}
-                        className="bg-[var(--snc-orange)] text-white px-4 py-2 rounded-lg my-8 hover:bg-orange-600 transition duration-300"
-                    >
-                        {added ? "Added!" : "Add To Cart"}
-                    </button>
+                    onClick={handleAdd}
+                    disabled={added}
+                    className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 disabled:from-green-500 disabled:to-green-600 text-white py-4 px-6 rounded-xl text-center font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 disabled:scale-100 disabled:hover:shadow-lg"
+                >
+                    <span className="flex items-center justify-center space-x-2">
+                        <span>{added ? "Added to Cart!" : "Add To Cart"}</span>
+                        <span className="text-xl">{added ? "✓" : "+"}</span>
+                    </span>
+                </button>
             </div>
-            <div className="bg-gradient-to-br from-gray-200 via-slate-200 to-cyan-950 p-4 py-4 text-left mt-auto text-gray-900 text-xl font-bold block">
-                {product.description}
-            </div>
+
+            {/* Bottom Accent */}
+            <div className="h-1 bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600"></div>
         </div>
     );
 }
