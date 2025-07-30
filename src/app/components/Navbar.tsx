@@ -6,13 +6,14 @@ import { useEffect, useState } from 'react'
 import { useCart } from '../context/CartContext'
 
 const navigation = [
-    { name: 'Home', href: '/', current: true },
+    { name: 'Home', href: '/', current: false },
     { name: 'Proteins', href: '/proteins', current: false },
     { name: 'Pre-Workouts', href: '/preWorkouts', current: false },
     { name: 'Fat Loss', href: '/fatLoss', current: false },
     // { name: 'Other Products', href: '#', current: false },
     { name: 'Plans', href: '/plans', current: false },
     { name: 'The Studio', href: '/studioGallery', current: false },
+    { name: 'Contact Us', href: '/contact', current: false },
 ]
 
 function classNames(...classes: (string | boolean | undefined)[]): string {
